@@ -6,7 +6,7 @@
 #Módulos que deben ser importados
 import simpy
 import random
-import statistics 
+import statistics #módulo para hacer estádisticas
 
 RANDOM_SEED = 20 #Semilla
 
@@ -70,6 +70,14 @@ def Generador( nomproceso,env, procesoram, instotales, tprocesos, velocity):
 #Añadir tiempos a lista de tiempos para uso de estadísticas
     lista_tiempos.append(env.now - tiempo_ingreso)
 
+#Método que sirve para generar las estadisticas   
+def statis():
+    media = round(sum(lista_tiempos)/len(lista_tiempos))
+    des = round(statistics.stdev(lista_tiempos)) #https://www.geeksforgeeks.org/python-statistics-stdev/#:~:text=Statistics%20module%20in%20Python%20provides,rather%20than%20an%20entire%20population.
+    print("\n----------------------------Estadísticas----------------------------")
+    print("\n Promedio del tiempo que permanecen los procesos es de: %5.1f" %(media) )
+    print("\n Desviacion estandar del tiempo promedio fue de: %5.1f \n" %des)
+
 #Simpy environmet. 
 # Setup and start the simulation 
 print('----------------------------SIMULACION DES----------------------------')
@@ -88,3 +96,4 @@ for i in range(PROCESOS):
     env.process(Generador('Proceso #%d' %i, env, memoriaRam, ins, Tproceso, INSTRUCCIONES))
 #Se inicia la simulación, se detendrá hasta que se acaben los procesos
 env.run()
+statis()
