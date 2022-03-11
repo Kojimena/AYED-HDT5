@@ -11,5 +11,9 @@
 ## Estrategia a seguir para reducir el tiempo promedio de corrida de los procesos
 
 ```diff
-Basandome en los resultados obtenidos de la simulación, la mejor estrategia para optimizar los procesos, es si se le agregan más instrucciones por min a resolver o más procesadores, ya que observando los gráficos podemos determinar que al hacer estos cambios el valor promedio del tiempo es menor a las demas pruebas.
+Basandome en los resultados obtenidos de la simulación,
+la mejor estrategia para optimizar los procesos, 
+es si se le agregan más instrucciones por min a resolver o más procesadores,
+ya que observando los gráficos podemos determinar que al hacer estos cambios 
+el valor promedio del tiempo es menor a las demas pruebas.
 ```
