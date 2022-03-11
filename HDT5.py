@@ -14,7 +14,7 @@ RAM = 100 #Ram total
 
 CPU = 1 #Un proceso por unidad de tiempo
 
-PROCESOS =25 #Cantidad de procesos iniciales
+PROCESOS =100 #Cantidad de procesos iniciales
 
 INTERVALO=10 #Intervalo de catidad de procesos totales
 
@@ -96,4 +96,4 @@ for i in range(PROCESOS):
     env.process(Generador('Proceso #%d' %i, env, memoriaRam, ins, Tproceso, INSTRUCCIONES))
 #Se inicia la simulación, se detendrá hasta que se acaben los procesos
 env.run()
-statis()
+statis() #mostrar estadísticas
