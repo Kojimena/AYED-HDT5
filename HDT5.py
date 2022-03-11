@@ -31,7 +31,7 @@ def Generador( nomproceso,env, procesoram, instotales, tprocesos, velocity):
     
 #NEW(PROCESOS NUEVOS)
     yield env.timeout(tprocesos)
-    print('\n(ESTADO: new) %s, Solicita %d de RAM en tiempo: %5.1f' %  (nomproceso, procesoram, env.now)) #
+    print('\n(ESTADO: new) %s, Solicita %d de RAM en tiempo: %5.1f' %  (nomproceso, procesoram, env.now)) 
     tiempo_ingreso = env.now   
 #READY(LISTO PARA SER ACEPTADO)
     yield SIMRAM.get(procesoram)
@@ -85,8 +85,8 @@ random.seed(RANDOM_SEED)
 
 env = simpy.Environment()
 #Parámetros de la simulación
-SIMRAM = simpy.Container(env, init =RAM, capacity=RAM)
-SIMCPU = simpy.Resource(env, capacity = CPU)
+SIMRAM = simpy.Container(env, init =RAM, capacity=RAM) #Memoria RAM
+SIMCPU = simpy.Resource(env, capacity = CPU) #CPU
 ESPERA = simpy.Resource(env, capacity = 2) #Operaciones IO
 
 for i in range(PROCESOS):
@@ -95,5 +95,5 @@ for i in range(PROCESOS):
     Tproceso = random.expovariate(1.0/INTERVALO)
     env.process(Generador('Proceso #%d' %i, env, memoriaRam, ins, Tproceso, INSTRUCCIONES))
 #Se inicia la simulación, se detendrá hasta que se acaben los procesos
-env.run()
+env.run() #corre el ambiente
 statis() #mostrar estadísticas
